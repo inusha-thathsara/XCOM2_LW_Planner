@@ -16,7 +16,7 @@
 
 ## Demo
 
-Once deployed, the app will be available at: [https://inusha-thathsara.github.io/XCOM2_LW_Planner/](https://inusha-thathsara.github.io/XCOM2_LW_Planner/)
+The app will be available at: [https://inusha-thathsara.github.io/XCOM2_LW_Planner/](https://inusha-thathsara.github.io/XCOM2_LW_Planner/)
 
 ## Getting Started
 
