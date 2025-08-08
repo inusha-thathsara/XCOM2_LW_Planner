@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { HomeIcon, UsersIcon, MapIcon, BarChartIcon, MenuIcon } from 'lucide-react';
-import { useTheme } from '../../contexts/ThemeContext';
+import { HomeIcon, UsersIcon, MapIcon, MenuIcon } from 'lucide-react';
+// Fix for TypeScript: declare ImportMetaEnv type for Vite
+declare global {
+  interface ImportMeta {
+    env: {
+      BASE_URL: string;
+    };
+  }
+}
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
@@ -24,7 +31,15 @@ const Header: React.FC = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <img src="/Long_War_2_Mod_XCOM_2.jpg" alt="Long War 2" className="h-8 w-auto rounded mr-2" />
+              <img
+                src={`${import.meta.env.BASE_URL}Long_War_2_Mod_XCOM_2.jpg`}
+                alt="Long War 2"
+                className="h-8 w-auto rounded mr-2"
+                onError={e => {
+                  // fallback for broken image
+                  (e.target as HTMLImageElement).style.display = 'none';
+                }}
+              />
               <span className="text-xl font-bold text-blue-400">
                 LW2 Squad Planner
               </span>
